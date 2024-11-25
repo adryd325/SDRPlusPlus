@@ -87,6 +87,7 @@ public:
             config.conf["device"] = "";
         }
         else {
+            flog::info("setting selectedDevName to {0}", config.conf["device"]);
             selectedDevName = config.conf["device"];
         }
         config.release(true);
@@ -150,12 +151,14 @@ public:
     }
 
     void selectFirst() {
+        flog::info("selecting first");
         if (devCount > 0) {
             selectById(0);
         }
     }
 
     void selectByName(std::string name) {
+        flog::info("selecting by name {0}", name);
         for (int i = 0; i < devCount; i++) {
             if (name == devNames[i]) {
                 selectById(i);
@@ -166,6 +169,7 @@ public:
     }
 
     void selectById(int id) {
+        flog::info("selecting id {0}", id);
         selectedDevName = devNames[id];
 
 #ifndef __ANDROID__
